@@ -18,6 +18,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity  implements
         AdapterView.OnItemClickListener , AdapterView.OnItemLongClickListener {
+    private NoteAdapter adapter;
+    private List<Note> notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +27,13 @@ public class MainActivity extends AppCompatActivity  implements
         setContentView(R.layout.activity_main);
 
         ListView listView = findViewById(R.id.list);
-        List<Note> notes = new ArrayList<>();
+        notes = new ArrayList<>();
         notes.add(new Note("sidali assoull","ashfhsafhasfsafkhsakhfsahjafsh"));
         notes.add(new Note("sidali assoull","ashfhsafhasfsafkhsakhfsahjafsh"));
         notes.add(new Note("sidali assoull","ashfhsafhasfsafkhsakhfsahjafsh"));
         notes.add(new Note("sidali assoull","ashfhsafhasfsafkhsakhfsahjafsh"));
 
-        NoteAdapter adapter = new NoteAdapter(MainActivity.this,notes);
+        adapter = new NoteAdapter(MainActivity.this,notes);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
         listView.setOnItemLongClickListener(this);
@@ -54,7 +56,8 @@ public class MainActivity extends AppCompatActivity  implements
         confirm.setPositiveButton(android.R.string.ok,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int idBtn) {
-//code
+                        notes.remove((int)l);
+                        adapter.notifyDataSetChanged();
                     }
                 });
         confirm.setNegativeButton(android.R.string.cancel, null);
