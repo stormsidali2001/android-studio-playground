@@ -1,7 +1,9 @@
 package com.example.notesapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity  implements
-        AdapterView.OnItemClickListener {
+        AdapterView.OnItemClickListener , AdapterView.OnItemLongClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +34,31 @@ public class MainActivity extends AppCompatActivity  implements
         NoteAdapter adapter = new NoteAdapter(MainActivity.this,notes);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+        listView.setOnItemLongClickListener(this);
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         // l : the clicked item position
         Toast.makeText(MainActivity.this, "l'élément sélectionné : " +l,Toast.LENGTH_LONG).show();
+    }
+
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Toast.makeText( MainActivity.this, "Long click sélectionné :"+l,Toast.LENGTH_LONG).show();
+        AlertDialog.Builder confirm = new AlertDialog.Builder(this);
+        confirm.setTitle("Suppression");
+        confirm.setIcon(android.R.drawable.ic_dialog_alert);
+        confirm.setMessage("Vous confirmez la suppression ?");
+        confirm.setPositiveButton(android.R.string.ok,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int idBtn) {
+//code
+                    }
+                });
+        confirm.setNegativeButton(android.R.string.cancel, null);
+        confirm.show();
+        return true;
     }
 }
