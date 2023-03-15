@@ -45,6 +45,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
         ViewHolder viewHolder = (ViewHolder) convertView.getTag();
         if(viewHolder == null ){
             //getting the convertView children
+            viewHolder = new ViewHolder();
             viewHolder.title = (TextView)  convertView.findViewById(R.id.title);
             viewHolder.description = (TextView) convertView.findViewById(R.id.description);
             convertView.setTag(viewHolder);
@@ -55,6 +56,12 @@ public class NoteAdapter extends ArrayAdapter<Note> {
 
         return convertView;
     }
+    /**
+     * the adapter calls the getView for each visible item on the screen
+     * the adapter inflate the layout (instanciate the xml file) into the parent ( the list view) using the created/recycled ConvertView
+     * it gets the viewHolder from the tag of the convert view (or create a new view holder if its not yet created) (remember if we scroll down upper views will be recycled for memory optimisation purposes)
+     * after getting the <position> item from the List the view holder sets those data into the attributes of the item views
+     */
 
 
 }
