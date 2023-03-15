@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.example.notesapp.R;
+import com.example.notesapp.ViewHolder.ViewHolder;
 import com.example.notesapp.entities.Note;
 
 import java.util.List;
@@ -32,21 +33,26 @@ public class NoteAdapter extends ArrayAdapter<Note> {
     // position (index in array) , convertView (note.xml , child view) , parent : bayn
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        convertView = LayoutInflater.from(this.getContext())
-                .inflate(
-                        R.layout.note, // putting  child in parent
-                        parent,
-                        false //the view is not yet linked to the list
-                );
+        if(convertView == null){
+            convertView = LayoutInflater.from(this.getContext())
+                    .inflate(
+                            R.layout.note, // putting  child in parent
+                            parent,
+                            false //the view is not yet linked to the list
+                    );
+        }
 
-        //getting the convertView children
-        TextView title = (TextView)  convertView.findViewById(R.id.title);
-        TextView description = (TextView) convertView.findViewById(R.id.description);
-
+        ViewHolder viewHolder = (ViewHolder) convertView.getTag();
+        if(viewHolder == null ){
+            //getting the convertView children
+            viewHolder.title = (TextView)  convertView.findViewById(R.id.title);
+            viewHolder.description = (TextView) convertView.findViewById(R.id.description);
+            convertView.setTag(viewHolder);
+        }
         Note note = notes.get(position);
-        Log.d("info", "getView: position:" +position+"note : "+notes);
-        title.setText(note.getTitle());
-        description.setText(note.getDescription());
+        viewHolder.title.setText(note.getTitle());
+        viewHolder.description .setText(note.getDescription());
+
         return convertView;
     }
 
