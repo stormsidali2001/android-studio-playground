@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity  implements
         Note note = notes.get((int)l);
         intent.putExtra("note_title",note.getTitle());
         intent.putExtra("note_description",note.getDescription());
+        intent.putExtra("note_date",note.getCreatedAt().toString());
         startActivity(intent);
     }
 

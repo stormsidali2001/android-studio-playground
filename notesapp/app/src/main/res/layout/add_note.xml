@@ -13,8 +13,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Inserer une Note"
-        android:textSize="24sp" />
+        android:text="New Note"
+        android:textSize="24sp"
+        android:layout_marginBottom="10dp"
+
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,7 +30,7 @@
         android:id="@+id/add_note_title_input"
         android:layout_width="251dp"
         android:layout_height="wrap_content"
-        android:hint="Ajouter un élément" />
+        android:hint="Title" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,13 +42,13 @@
         android:layout_width="253dp"
         android:layout_height="wrap_content"
 
-        android:hint="Ajouter un élément" />
+        android:hint="Description" />
 
     <Button
         android:id="@+id/add_note_submit_btn"
         android:layout_width="158dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-
-        android:text="Ajouter" />
+android:layout_marginTop="10dp"
+        android:text="Submit" />
 </LinearLayout>
