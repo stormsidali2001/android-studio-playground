@@ -39,6 +39,11 @@ public class MainActivity extends AppCompatActivity  implements
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putParcelableArrayList("notes",notes);
     }
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        notes = savedInstanceState.getParcelableArrayList("notes");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +54,17 @@ public class MainActivity extends AppCompatActivity  implements
         ListView listView = findViewById(R.id.list);
         if(savedInstanceState!= null){
             notes = savedInstanceState.getParcelableArrayList("notes");
+
         }
-            notes = new ArrayList<>();
-            notes.add(new Note("sidali assoull","ashfhsafhasfsafkhsakhfsahjafsh"));
-            notes.add(new Note("sidali assoull","ashfhsafhasfsafkhsakhfsahjafsh"));
-            notes.add(new Note("sidali assoull","ashfhsafhasfsafkhsakhfsahjafsh"));
-            notes.add(new Note("sidali assoull","ashfhsafhasfsafkhsakhfsahjafsh"));
+        if(notes == null){
+                notes = new ArrayList<>();
+                notes.add(new Note("sidali assoull","ashfhsafhasfsafkhsakhfsahjafsh"));
+                notes.add(new Note("sidali assoull","ashfhsafhasfsafkhsakhfsahjafsh"));
+                notes.add(new Note("sidali assoull","ashfhsafhasfsafkhsakhfsahjafsh"));
+                notes.add(new Note("sidali assoull","ashfhsafhasfsafkhsakhfsahjafsh"));
+
+            }
+
 
 
 

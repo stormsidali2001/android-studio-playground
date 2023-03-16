@@ -55,13 +55,11 @@ public class Note implements Parcelable {
         parcel.writeLong(createdAt.getTime());
     }
 
-    public static final Creator<Note> CREATOR = new Creator<Note>() {
-        @Override
+    public static final Parcelable.Creator<Note> CREATOR = new Parcelable.Creator<Note>() {
         public Note createFromParcel(Parcel in) {
             return new Note(in);
         }
 
-        @Override
         public Note[] newArray(int size) {
             return new Note[size];
         }
