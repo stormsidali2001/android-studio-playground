@@ -45,6 +45,7 @@
         android:id="@+id/add_note_submit_btn"
         android:layout_width="158dp"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
 
         android:text="Ajouter" />
 </LinearLayout>
