@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+
+    android:layout_centerHorizontal="true"
+
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inserer une Note"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+
+        />
+
+    <EditText
+        android:id="@+id/add_note_title_input"
+        android:layout_width="251dp"
+        android:layout_height="wrap_content"
+        android:hint="Ajouter un élément" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description" />
+
+    <EditText
+        android:id="@+id/add_note_description_input"
+        android:layout_width="253dp"
+        android:layout_height="wrap_content"
+
+        android:hint="Ajouter un élément" />
+
+    <Button
+        android:id="@+id/add_note_submit_btn"
+        android:layout_width="158dp"
+        android:layout_height="match_parent"
+
+        android:text="Ajouter" />
+</LinearLayout>
